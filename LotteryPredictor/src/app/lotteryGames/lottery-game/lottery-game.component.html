@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table mb-0"
+           *ngIf="lotteryGames && lotteryGames.length">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-outline-primary btn-sm"
+                    (click)="toggleImage()">
+              {{showImage ? "Hide" : "Show"}} Image
+            </button>
+          </th>
+          <th>Name</th>
+          <th>Code</th>
+          <th>State</th>        
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lotteryGame of lotteryGames">
+          <td>
+            <img *ngIf="showImage && lotteryGame.imageUrl"
+                 [src]="lotteryGame.imageUrl"
+                 [title]="lotteryGame.Name"
+                 [style.width.px]="imageWidth"
+                 [style.margin.px]="imageMargin">
+          </td>
+          <td>
+            <a [routerLink]="['/lotteryGames/lottery-game', lotteryGame.id]">
+              {{ lotteryGame.name }}
+            </a>
+          </td>
+          <!-- <td>{{ lotteryGame.name }}</td> -->
+          <td>{{ lotteryGame.code }}</td>
+          <td>{{ lotteryGame.state }}</td>          
+          <!-- <td>
+            <button class="btn btn-outline-primary btn-sm"
+                    [routerLink]="['/products', product.id, 'edit']">
+              Edit
+            </button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+</div>

@@ -1,0 +1,40 @@
+<p>lottery-game-detail works for {{lotteryGame?.name}}</p>
+
+<div class="card">
+    <div class="card-header">
+      {{pageTitle}}{{lotteryGame?.name}}
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table mb-0"
+           *ngIf="lotteryGame && lotteryGame.drawingHistory && lotteryGame.drawingHistory.length">
+      <thead>
+        <tr>
+          <!-- <th>
+            <button class="btn btn-outline-primary btn-sm"
+                    (click)="toggleImage()">
+              {{showImage ? "Hide" : "Show"}} Image
+            </button>
+          </th> -->
+          <th>Drawing Date</th>
+          <th>Winning Number</th>
+          <th>Megaball</th> 
+          <th>Megaplier</th>             
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let drawingHistory of lotteryGame.drawingHistory">
+            <td>{{ drawingHistory.drawingDate  | date }}</td>
+             <!--<td class="DrawingHistory"> {{ buildWinningNumber(drawingHistory) }}</td>-->
+            <td>
+              <app-selector-numbers-detail [selectorNumbersSequence]="buildWinningNumber(drawingHistory)"></app-selector-numbers-detail>              
+            </td>
+            <td>{{ buildIncompleteMatchSelector(drawingHistory) }}</td>
+            <td>{{ buildIncompleteMatchMultiplier(drawingHistory) }}</td>
+        </tr>
+      </tbody>
+    </table> 
+</div>     
+

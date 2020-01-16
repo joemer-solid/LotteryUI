@@ -1,0 +1,12 @@
+span.SelectorNumber {
+    color: blue;
+    display: inline-block;
+    font-weight: 700;
+    font-size: larger;
+  }
+
+span.AnalysisNumber {
+    color: darkslategrey;
+    display: inline-block;
+    font-weight: 500;
+}
